@@ -1,11 +1,33 @@
-MANTHOS HABITS V3.1
+MANTHOS HABITS V3.2 PWA
 
-Visuele update op V3:
-- Nieuwe transparante Manthos branding
-- Losse vlam voor splash, info en app-icoon
-- Grotere standaard profielfoto met aangeleverde Manthos-outline
-- Consistentere marges, kaarten en navigatie
-- Functionaliteit bewust gelijk gehouden aan V3
-- Alles lokaal; geen betaalde diensten
+Verschil t.o.v. V3.1:
+- Service worker toegevoegd met fetch-handler en offline cache
+- PWA manifest aangescherpt voor GitHub Pages project hosting
+- start_url en scope staan relatief op ./
+- maskable app-icoon toegevoegd
+- Android/Apple app-meta toegevoegd
+- display = standalone
 
-Let op: V3.1 gebruikt een nieuwe lokale opslag-sleutel (mh31), zodat testen schoon begint.
+Upload/vervang in GitHub:
+1. index.html
+2. manifest.json
+3. icon-192.png
+4. icon-512.png
+5. icon-maskable-512.png
+6. service-worker.js
+
+Na deployment:
+- Open de site opnieuw in Chrome
+- Vernieuw de pagina
+- Wacht enkele seconden zodat de service worker activeert
+- Chrome > menu > Installeren en snelkoppelingen
+- Kies 'Installeren' als die optie verschijnt
+
+Als Chrome oude data vasthoudt: sluit alle tabs van de site volledig en open de site opnieuw.
+
+
+VISUELE CORRECTIE
+- Transparante Manthos-branding heeft geen rechthoekige CSS-achtergrond meer.
+- Branding krijgt geen border of shadow.
+- Profielafbeelding behoudt transparantie.
+- Overige vormgeving en functionaliteit van V3.2 is ongemoeid gelaten.

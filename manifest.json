@@ -1,20 +1,36 @@
 {
+  "id": "./",
   "name": "Manthos Habits",
   "short_name": "Manthos",
-  "start_url": "./index.html",
+  "description": "Een eenvoudige habit tracker voor mannen, gericht op fysiek, relaties en ontwikkeling.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#090909",
   "theme_color": "#090909",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

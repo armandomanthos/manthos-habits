@@ -1,4 +1,4 @@
-const CACHE = 'manthos-habits-v3-3';
+const CACHE = 'manthos-habits-v3-3-1';
 const ASSETS = [
   './',
   './index.html',
@@ -6,6 +6,8 @@ const ASSETS = [
   './v33-content.css',
   './v33-content.js',
   './v33-nav.js',
+  './v331-install.css',
+  './v331-install.js',
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png'
@@ -33,14 +35,14 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // For navigation and app code, prefer the network so existing installs
-  // receive a new release quickly. Fall back to cache when offline.
   if (
     request.mode === 'navigate' ||
     url.pathname.endsWith('/index.html') ||
     url.pathname.endsWith('/v33-content.css') ||
     url.pathname.endsWith('/v33-content.js') ||
-    url.pathname.endsWith('/v33-nav.js')
+    url.pathname.endsWith('/v33-nav.js') ||
+    url.pathname.endsWith('/v331-install.css') ||
+    url.pathname.endsWith('/v331-install.js')
   ) {
     event.respondWith(
       fetch(request)
@@ -54,7 +56,6 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Static assets remain cache-first for speed and offline use.
   event.respondWith(
     caches.match(request).then(cached => {
       return cached || fetch(request).then(response => {

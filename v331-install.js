@@ -2,6 +2,7 @@
   let deferredPrompt=null;
   const isStandalone=()=>window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
   const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isMobile=()=>/android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent)||(navigator.maxTouchPoints>1&&window.innerWidth<=1024);
   const el=(t,c,h)=>{const x=document.createElement(t);if(c)x.className=c;if(h!==undefined)x.innerHTML=h;return x};
 
   function removeTrigger(){document.getElementById('installTrigger')?.remove()}
@@ -42,7 +43,7 @@
 
   ensureTrigger();
   setTimeout(()=>{
-    if(!isStandalone()&&!localStorage.getItem('manthos_install_seen')){
+    if(isMobile()&&!isStandalone()&&!localStorage.getItem('manthos_install_seen')){
       show();
       localStorage.setItem('manthos_install_seen','1');
     }

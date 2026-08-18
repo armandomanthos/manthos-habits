@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     logo.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();goHome();}});
   }
 
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.error('Service worker registration failed:',err));
+  }
+
   if(!document.querySelector('link[data-v331-install]')){
     const css=document.createElement('link');
     css.rel='stylesheet';

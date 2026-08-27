@@ -9,6 +9,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const loadCss=(href,key)=>{if(document.querySelector(`link[data-${key}]`))return;const x=document.createElement('link');x.rel='stylesheet';x.href=href;x.setAttribute(`data-${key}`,'1');document.head.appendChild(x)};
   const loadJs=(src,key)=>{if(document.querySelector(`script[data-${key}]`))return;const x=document.createElement('script');x.src=src;x.setAttribute(`data-${key}`,'1');document.body.appendChild(x)};
   loadCss('./v331-install.css','v331-install');loadJs('./v331-install.js','v331-install');
-  loadCss('./v34-hub.css','v34-hub');loadJs('./v34-hub.js','v34-hub');
   loadCss('./v34-paths.css','v34-paths');loadJs('./v34-paths.js','v34-paths');
+  loadCss('./v34-core.css','v34-core');loadJs('./v34-core.js','v34-core');
 });

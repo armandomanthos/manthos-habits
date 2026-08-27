@@ -14,18 +14,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.error('Service worker registration failed:',err));
   }
 
-  if(!document.querySelector('link[data-v331-install]')){
-    const css=document.createElement('link');
-    css.rel='stylesheet';
-    css.href='./v331-install.css';
-    css.dataset.v331Install='1';
-    document.head.appendChild(css);
-  }
+  const loadCss=(href,key)=>{
+    if(document.querySelector(`link[data-${key}]`))return;
+    const css=document.createElement('link');css.rel='stylesheet';css.href=href;css.setAttribute(`data-${key}`,'1');document.head.appendChild(css);
+  };
+  const loadJs=(src,key)=>{
+    if(document.querySelector(`script[data-${key}]`))return;
+    const js=document.createElement('script');js.src=src;js.setAttribute(`data-${key}`,'1');document.body.appendChild(js);
+  };
 
-  if(!document.querySelector('script[data-v331-install]')){
-    const js=document.createElement('script');
-    js.src='./v331-install.js';
-    js.dataset.v331Install='1';
-    document.body.appendChild(js);
-  }
+  loadCss('./v331-install.css','v331-install');
+  loadJs('./v331-install.js','v331-install');
+  loadCss('./v34-hub.css','v34-hub');
+  loadJs('./v34-hub.js','v34-hub');
 });

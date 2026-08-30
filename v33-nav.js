@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     const goHome=()=>{if(typeof home==='function')home();else if(typeof page==='function')page('home')};
     logo.addEventListener('click',goHome);logo.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();goHome()}});
   }
+
+  // Production guard: test/reset controls must never be visible to members.
+  const removeTestControls=()=>{
+    document.querySelectorAll('button,a,[role="button"]').forEach(el=>{
+      const text=(el.textContent||'').trim().toUpperCase();
+      if(text.includes('RESET TEST')||text==='TEST RESET') el.remove();
+    });
+  };
+  removeTestControls();
+  new MutationObserver(removeTestControls).observe(document.body,{childList:true,subtree:true});
+
   if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.error('Service worker registration failed:',err));
   const loadCss=(href,key)=>{if(document.querySelector(`link[data-${key}]`))return;const x=document.createElement('link');x.rel='stylesheet';x.href=href;x.setAttribute(`data-${key}`,'1');document.head.appendChild(x)};
   const loadJs=(src,key)=>{if(document.querySelector(`script[data-${key}]`))return;const x=document.createElement('script');x.src=src;x.setAttribute(`data-${key}`,'1');document.body.appendChild(x)};

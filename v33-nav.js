@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
   const splash=document.getElementById('splash');
   if(splash){
-    splash.innerHTML='<img class="manthos-splash-art" src="assets/navigation/Splash screen.png" alt="Manthos Habit Tracker">';
+    splash.innerHTML='<img class="manthos-splash-art" src="assets/navigation/Splash%20screen.png?v=3412" alt="Manthos Habit Tracker">';
     splash.style.cssText+=';background:#090909;z-index:9999;';
     const style=document.createElement('style');
     style.textContent='.manthos-splash-art{width:min(82vw,430px);max-height:76vh;object-fit:contain;display:block}';

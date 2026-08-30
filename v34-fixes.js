@@ -19,7 +19,7 @@
   function applyDashboardHeader(){
     const logo=document.querySelector('.word');
     if(!logo)return;
-    logo.innerHTML='<img src="assets/navigation/Dashboard.png" alt="Dashboard" style="width:100%;height:100%;object-fit:contain;display:block"><b style="display:none">DASHBOARD</b>';
+    logo.innerHTML='<img src="assets/navigation/Dashboard.png?v=3412" alt="Dashboard" style="width:100%;height:100%;object-fit:contain;display:block"><b style="display:none">DASHBOARD</b>';
     logo.classList.add('v34-dashboard-logo');
     logo.setAttribute('role','button');
     logo.setAttribute('aria-label','Dashboard');

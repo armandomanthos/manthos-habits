@@ -1,6 +1,6 @@
-const CACHE = 'manthos-habits-v3-4-13-mobile-dashboard';
+const CACHE = 'manthos-habits-v3-4-14-artwork-refresh';
 const ASSETS = [
-  './','./index.html','./manifest.json','./v33-content.css','./v33-content.js','./v33-nav.js','./v331-install.css','./v331-install.js','./v34-core.css','./v34-core.js','./v34-fixes.js?v=3413','./v34-hub.css','./v34-hub.js','./v34-paths.css','./v34-paths.js','./assets/archetypes/Krijger.png','./assets/archetypes/Hoeder.png','./assets/archetypes/Vakman.png','./assets/navigation/Dashboard.png?v=20260830-4','./assets/navigation/Splash%20screen.png?v=3412','./assets/navigation/Manthos-nu.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png'
+  './','./index.html','./manifest.json','./v33-content.css','./v33-content.js','./v33-nav.js','./v331-install.css','./v331-install.js','./v34-core.css','./v34-core.js','./v34-fixes.js?v=3414','./v34-hub.css','./v34-hub.js','./v34-paths.css','./v34-paths.js','./assets/archetypes/Krijger.png','./assets/archetypes/Hoeder.png','./assets/archetypes/Vakman.png','./assets/navigation/Dashboard.png?v=3414','./assets/navigation/Splash%20screen.png?v=3414','./assets/navigation/Manthos-nu.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png'
 ];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

@@ -17,12 +17,16 @@
   function applyDashboardHeader(){
     const logo=document.querySelector('.word');
     if(!logo)return;
-    logo.replaceChildren();
-    const img=document.createElement('img');
-    img.src='./assets/navigation/Dashboard.png?v=20260830-2';
-    img.alt='Dashboard';
-    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;border-radius:10px;';
-    logo.appendChild(img);
+
+    if(logo.tagName==='IMG'){
+      logo.src='./assets/navigation/Dashboard.png?v=20260830-3';
+      logo.alt='Dashboard';
+      logo.style.objectFit='cover';
+      logo.style.objectPosition='center';
+    }else{
+      logo.innerHTML='<img src="./assets/navigation/Dashboard.png?v=20260830-3" alt="Dashboard" style="width:100%;height:100%;object-fit:cover;display:block">';
+    }
+
     logo.classList.add('v34-dashboard-logo');
     logo.style.padding='0';
     logo.setAttribute('role','button');

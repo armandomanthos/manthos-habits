@@ -32,5 +32,5 @@ document.addEventListener('DOMContentLoaded',()=>{
   loadCss('./v331-install.css','v331-install');loadJs('./v331-install.js','v331-install');
   loadCss('./v34-paths.css','v34-paths');loadJs('./v34-paths.js','v34-paths');
   loadCss('./v34-core.css','v34-core');loadJs('./v34-core.js','v34-core');
-  setTimeout(()=>loadJs('./v34-fixes.js','v34-fixes'),80);
+  setTimeout(()=>loadJs('./v34-fixes.js?v=3413','v34-fixes'),80);
 });

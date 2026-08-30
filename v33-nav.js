@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
   const splash=document.getElementById('splash');
   if(splash){
-    splash.innerHTML='<img class="manthos-splash-art" src="assets/navigation/Splash%20screen.png?v=3412" alt="Manthos Habit Tracker">';
+    splash.innerHTML='<img class="manthos-splash-art" src="assets/navigation/Splash%20screen.png?v=3414" alt="Manthos Habit Tracker">';
     splash.style.cssText+=';background:#090909;z-index:9999;';
     const style=document.createElement('style');
     style.textContent='.manthos-splash-art{width:min(82vw,430px);max-height:76vh;object-fit:contain;display:block}';
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     logo.addEventListener('click',goHome);logo.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();goHome()}});
   }
 
-  // Production guard: test/reset controls must never be visible to members.
   const removeTestControls=()=>{
     document.querySelectorAll('button,a,[role="button"]').forEach(el=>{
       const text=(el.textContent||'').trim().toUpperCase();
@@ -32,5 +31,5 @@ document.addEventListener('DOMContentLoaded',()=>{
   loadCss('./v331-install.css','v331-install');loadJs('./v331-install.js','v331-install');
   loadCss('./v34-paths.css','v34-paths');loadJs('./v34-paths.js','v34-paths');
   loadCss('./v34-core.css','v34-core');loadJs('./v34-core.js','v34-core');
-  setTimeout(()=>loadJs('./v34-fixes.js?v=3413','v34-fixes'),80);
+  setTimeout(()=>loadJs('./v34-fixes.js?v=3414','v34-fixes'),80);
 });

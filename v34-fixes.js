@@ -16,23 +16,23 @@
   function applyDashboardHeader(){
     const logo=document.querySelector('.word');
     if(!logo)return;
-    const size=window.matchMedia('(max-width:700px)').matches?'86px':'106px';
+    const size=window.matchMedia('(max-width:700px)').matches?'96px':'112px';
     logo.style.setProperty('width',size,'important');
     logo.style.setProperty('height',size,'important');
-    logo.style.setProperty('padding','3px','important');
+    logo.style.setProperty('padding','2px','important');
     if(logo.tagName==='IMG'){
-      logo.src='./assets/navigation/Dashboard.png?v=3415';
+      logo.src='./assets/navigation/Dashboard.png?v=3417';
       logo.alt='Dashboard';
-      logo.style.objectFit='contain';
-      logo.style.objectPosition='center';
+      logo.style.setProperty('object-fit','contain','important');
+      logo.style.setProperty('object-position','center','important');
     }else{
-      logo.innerHTML='<img src="./assets/navigation/Dashboard.png?v=3415" alt="Dashboard" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block">';
+      logo.innerHTML='<img src="./assets/navigation/Dashboard.png?v=3417" alt="Dashboard" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block">';
     }
     logo.classList.add('v34-dashboard-logo');
     logo.setAttribute('role','button');
     logo.setAttribute('aria-label','Dashboard');
     logo.setAttribute('title','Dashboard');
-    logo.onclick=()=>{ if(typeof home==='function') home(); };
+    logo.onclick=()=>{ if(typeof homeV34==='function') homeV34(); else if(typeof home==='function') home(); };
   }
 
   function ensureHabitModal(){
@@ -74,6 +74,7 @@
   function openHabitModal(){
     ensureHabitModal();
     const back=document.getElementById('v34HabitModal');
+    if(!back)return;
     const input=back.querySelector('#v34HabitName');
     input.value='';
     back.querySelectorAll('[data-freq]').forEach(x=>x.classList.toggle('active',x.dataset.freq==='3'));
@@ -81,7 +82,13 @@
     setTimeout(()=>input.focus(),120);
   }
 
-  window.addFocusHabit=openHabitModal;
-  applyDashboardHeader();
-  window.addEventListener('manthos:path-selected',()=>setTimeout(()=>{applyDashboardHeader();window.addFocusHabit=openHabitModal},0));
+  function reapply(){
+    window.addFocusHabit=openHabitModal;
+    applyDashboardHeader();
+  }
+
+  reapply();
+  [150,400,800,1400,2400].forEach(ms=>setTimeout(reapply,ms));
+  window.addEventListener('load',()=>setTimeout(reapply,100));
+  window.addEventListener('manthos:path-selected',()=>setTimeout(reapply,100));
 })();

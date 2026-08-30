@@ -18,17 +18,21 @@
     const logo=document.querySelector('.word');
     if(!logo)return;
 
+    const size=window.matchMedia('(max-width:700px)').matches?'66px':'86px';
+    logo.style.setProperty('width',size,'important');
+    logo.style.setProperty('height',size,'important');
+    logo.style.setProperty('padding','5px','important');
+
     if(logo.tagName==='IMG'){
-      logo.src='./assets/navigation/Dashboard.png?v=20260830-3';
+      logo.src='./assets/navigation/Dashboard.png?v=20260830-4';
       logo.alt='Dashboard';
-      logo.style.objectFit='cover';
+      logo.style.objectFit='contain';
       logo.style.objectPosition='center';
     }else{
-      logo.innerHTML='<img src="./assets/navigation/Dashboard.png?v=20260830-3" alt="Dashboard" style="width:100%;height:100%;object-fit:cover;display:block">';
+      logo.innerHTML='<img src="./assets/navigation/Dashboard.png?v=20260830-4" alt="Dashboard" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block">';
     }
 
     logo.classList.add('v34-dashboard-logo');
-    logo.style.padding='0';
     logo.setAttribute('role','button');
     logo.setAttribute('aria-label','Dashboard');
     logo.setAttribute('title','Dashboard');

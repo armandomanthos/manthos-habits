@@ -1,4 +1,4 @@
-const CACHE = 'manthos-habits-v3-3-1';
+const CACHE = 'manthos-habits-v3-4-production';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,17 @@ const ASSETS = [
   './v33-nav.js',
   './v331-install.css',
   './v331-install.js',
+  './v34-core.css',
+  './v34-core.js',
+  './v34-hub.css',
+  './v34-hub.js',
+  './v34-paths.css',
+  './v34-paths.js',
+  './assets/archetypes/Krijger.png',
+  './assets/archetypes/Hoeder.png',
+  './assets/archetypes/Vakman.png',
+  './assets/navigation/Dashboard.png',
+  './assets/navigation/Manthos-nu.png',
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png'
@@ -35,15 +46,14 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
-  if (
+  const networkFirst =
     request.mode === 'navigate' ||
     url.pathname.endsWith('/index.html') ||
-    url.pathname.endsWith('/v33-content.css') ||
-    url.pathname.endsWith('/v33-content.js') ||
-    url.pathname.endsWith('/v33-nav.js') ||
-    url.pathname.endsWith('/v331-install.css') ||
-    url.pathname.endsWith('/v331-install.js')
-  ) {
+    url.pathname.endsWith('.css') ||
+    url.pathname.endsWith('.js') ||
+    url.pathname.endsWith('/manifest.json');
+
+  if (networkFirst) {
     event.respondWith(
       fetch(request)
         .then(response => {
